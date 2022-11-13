@@ -24,5 +24,5 @@
 <p>• STS</p>
 <p>• Mysql</p>
 <h2> Tables :</h2>
- <img src="https://www.flickr.com/photos/196944906@N06/52496449040/in/dateposted-public/">
+ <img src="https://github.com/Arijit-D/Online-Banking-System/blob/main/Screenshot%20(15).png">
 
