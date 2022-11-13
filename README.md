@@ -24,5 +24,5 @@
 <p>• STS</p>
 <p>• Mysql</p>
 <h2> Tables :</h2>
- <img src="https://drive.google.com/file/d/1jLzSm2k4IIuZ-Y3joKAFzoTF7QUlbRJu/view?usp=share_link">
+ <img src="https://www.flickr.com/photos/196944906@N06/52496449040/in/dateposted-public/">
 
