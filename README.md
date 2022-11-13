@@ -24,6 +24,6 @@
 <p>• STS</p>
 <p>• Mysql</p>
 <h2> Tables :</h2>
-<img src="C:\Users\USER\Pictures\Screenshots" alt="Italian Trulli">
+<img url="https://drive.google.com/file/d/1jLzSm2k4IIuZ-Y3joKAFzoTF7QUlbRJu/view?usp=share_link" alt="Italian Trulli">
 
 
