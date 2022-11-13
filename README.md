@@ -16,5 +16,13 @@
 <p>• Login using his/her username and password</p>
 <p>• Transfer the money from his account to other account</p>
 <p>• Checking the transaction history</p>
+<h2> Tech Stacks :</h2>
+<p>• Java</p>
+<p>• JDBC</p>
+<p>• SQL</p>
+<h2> Tools Used :</h2>
+<p>• STS</p>
+<p>• Mysql</p>
+
 
 
