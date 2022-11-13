@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.exception.CustomerException;
+import com.exception.TransactionException;
 import com.model.Customer;
+import com.model.Transaction;
 import com.utility.DBUtil;
 public class CustomerDaoImpl implements CustomerDao{
 
@@ -366,6 +368,213 @@ public class CustomerDaoImpl implements CustomerDao{
 		
 		
 	}
+
+	@Override
+	public Customer logInCustomer(int c_Acc_No, String c_Password) throws CustomerException {
+		// TODO Auto-generated method stub
+		
+
+		
+		Customer customer=null;
+		
+		try (Connection conn= DBUtil.provideConnection()){
+			
+			
+			PreparedStatement ps= conn.prepareStatement("select * from Customer where c_Acc_No=? AND c_Password = ?");
+			
+			
+			ps.setInt(1, c_Acc_No);
+			ps.setString(2, c_Password);
+			
+			ResultSet rs= ps.executeQuery();
+			
+			if(rs.next())
+			{
+				int ac= rs.getInt("c_Acc_No");
+				String n= rs.getString("c_Name");
+				String p= rs.getString("c_Password");
+				String a= rs.getString("c_Address");
+				String m= rs.getString("c_Mob_No");
+				String e= rs.getString("c_Email");
+				int Ta= rs.getInt("c_Total_Amount");
+				
+				customer = new Customer(ac, n, p, a, m, e, Ta);
+				
+			}else {
+//				customer="Invalid Username or password..";
+			}
+				
+			
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CustomerException(e.getMessage());
+		}
+		
+		
+		return customer;
+		
+	}
+
+	@Override
+	public String transferMoney(int s_Acc_No, int T_money, int r_Acc_No) throws CustomerException {
+		// TODO Auto-generated method stub
+		
+		String result = "not done";
+		
+		
+		 try(Connection conn=DBUtil.provideConnection()){
+				
+				PreparedStatement ps=conn.prepareStatement
+						("select*from customer where c_Acc_No=?");
+					
+				ps.setInt(1, r_Acc_No);
+				
+			    ResultSet rs = ps.executeQuery();
+			    
+			    if(rs.next()) {
+			       
+			    
+			    	
+			    	try(Connection conn1=DBUtil.provideConnection()) {
+			    		
+			    	PreparedStatement ps1 =	conn1.prepareStatement("insert into transaction values(?,?,?)");
+			    	
+			    	ps1.setInt(1, s_Acc_No);
+			    	ps1.setInt(2, T_money);
+			    	ps1.setInt(3, r_Acc_No);
+			    	
+			        int x =	ps1.executeUpdate();
+			        
+			        if(x>0) {
+			        	
+			        	
+			        	
+				    	try(Connection conn2=DBUtil.provideConnection()) {
+				    		
+				    	PreparedStatement ps2 =	conn2.prepareStatement("update customer set c_Total_Amount=c_Total_Amount-? where c_Acc_No = ?");
+				    	
+				    	ps2.setInt(1, T_money);
+				    	ps2.setInt(2, s_Acc_No);
+				    	
+				        int y =	ps2.executeUpdate();
+				        
+				        if(x>0) {
+				        	
+				        	result = "Done";
+				        	
+				        }
+				        else {
+				        	throw new CustomerException("account no does not exists");
+				        }
+							
+						} catch (SQLException e) {
+							// TODO: handle exception
+							e.printStackTrace();
+							throw new CustomerException(e.getMessage());
+						}
+				    	
+			        
+			        	
+			        }
+			        
+                        if(x>0) {
+			        	
+				    	try(Connection conn2=DBUtil.provideConnection()) {
+				    		
+				    	PreparedStatement ps2 =	conn2.prepareStatement("update customer set c_Total_Amount=c_Total_Amount+? where c_Acc_No = ?");
+				    	
+				    	ps2.setInt(1, T_money);
+				    	ps2.setInt(2, r_Acc_No);
+				    	
+				        int y =	ps2.executeUpdate();
+				        
+				        if(x>0) {
+				        	
+				        	result = "Done";
+				        	
+				        }
+				        else {
+				        	throw new CustomerException("account no does not exists");
+				        }
+							
+						} catch (SQLException e) {
+							// TODO: handle exception
+							e.printStackTrace();
+							throw new CustomerException(e.getMessage());
+						}
+				    	
+			        
+			        	
+			        }
+						
+					} catch (SQLException e) {
+						// TODO: handle exception
+						e.printStackTrace();
+						throw new CustomerException(e.getMessage());
+					}
+			    	
+			    
+			      
+			    }
+			    else {
+			    	throw new CustomerException("Account no does not exists");
+			    }
+				
+				
+				}catch (SQLException e) {
+					e.printStackTrace();
+					throw new CustomerException(e.getMessage());
+				}
+			
+		
+		
+		return result;
+		
+		
+		
+	}
+
+	@Override
+	public List<Transaction> viewTransactionHistory(int c_Acc_No) throws TransactionException {
+		// TODO Auto-generated method stub
+		
+		List<Transaction> transactions = new ArrayList<>();
+		
+	  
+	  
+	  try (Connection  conn = DBUtil.provideConnection()){
+		  
+		PreparedStatement ps =  conn.prepareStatement("select*from Transaction where sender_Acc_No = ? OR receiver_Acc_No=?");
+		
+		ps.setInt(1, c_Acc_No);
+		ps.setInt(2, c_Acc_No);
+		
+	  ResultSet rs = ps.executeQuery();
+	  
+	  
+	  while(rs.next()) {
+		 int s = rs.getInt("sender_Acc_No");
+		 int a = rs.getInt("transaction_Amount");
+		 int r = rs.getInt("receiver_Acc_No");
+		 
+		 Transaction transaction = new Transaction(s,a,r);
+		 
+		 transactions.add(transaction);
+	  }
+	  
+		
+	} catch (SQLException e) {
+		// TODO: handle exception
+		e.printStackTrace();
+		
+	}
+		
+		
+		return transactions;
+	}
+
+	
 
 	
 

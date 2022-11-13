@@ -24,12 +24,12 @@ public class Accountant {
 		System.out.println("===================Hello ========================");
 		System.out.println();
 		
-		System.out.println("===========please select options on the basis of your requirement============");
+		System.out.println("===========please select option on the basis of your requirement============");
 		System.out.println();
 		
 		System.out.println("press 1 : To Add new account for customer");
 		System.out.println();
-		System.out.println("press 2 : change mobile number using account number");
+		System.out.println("press 2 : To edit account details");
 		System.out.println();
 		System.out.println("Press 3 : To Remove the account by using account number");
 		System.out.println();
@@ -41,7 +41,7 @@ public class Accountant {
 		System.out.println();
 		System.out.println("Press 7 : To withdraw Money");
 		System.out.println();
-		System.out.println("Press 8 : For Exit ");
+		System.out.println("Press 8 : To return to Home page ");
 		
 		int choice = sc.nextInt();
 		
@@ -54,7 +54,7 @@ public class Accountant {
 				
 				System.out.println("--------select any one------");
 				
-				System.out.println("press 1 :to return to main page ");
+				System.out.println("press 1 :to return to Home page ");
 				System.out.println();
 				System.out.println("press 2 :to return to previous page ");
 				System.out.println();
@@ -92,7 +92,7 @@ public class Accountant {
 			
 			System.out.println("--------select any one------");
 			
-			System.out.println("press 1 :to return to main page ");
+			System.out.println("press 1 :to return to Home page ");
 			System.out.println();
 			System.out.println("press 2 :to return to previous page ");
 			System.out.println();
@@ -123,7 +123,7 @@ public class Accountant {
 			
            	System.out.println("--------select any one------");
 			
-			System.out.println("press 1 :to return to main page ");
+			System.out.println("press 1 :to return to Home page ");
 			System.out.println();
 			System.out.println("press 2 :to return to previous page ");
 			System.out.println();
@@ -155,7 +155,7 @@ public class Accountant {
 			
 	        System.out.println("--------select any one------");
 			
-			System.out.println("press 1 :to return to main page ");
+			System.out.println("press 1 :to return to Home page ");
 			System.out.println();
 			System.out.println("press 2 :to return to previous page ");
 			System.out.println();
@@ -187,7 +187,7 @@ public class Accountant {
 			
 			  System.out.println("--------select any one------");
 				
-				System.out.println("press 1 :to return to main page ");
+				System.out.println("press 1 :to return to Home page ");
 				System.out.println();
 				System.out.println("press 2 :to return to previous page ");
 				System.out.println();
@@ -220,7 +220,7 @@ public class Accountant {
 			
 			  System.out.println("--------select any one------");
 				
-				System.out.println("press 1 :to return to main page ");
+				System.out.println("press 1 :to return to Home page ");
 				System.out.println();
 				System.out.println("press 2 :to return to previous page ");
 				System.out.println();
@@ -251,7 +251,7 @@ public class Accountant {
 				
 			  System.out.println("--------select any one------");
 				
-				System.out.println("press 1 :to return to main page ");
+				System.out.println("press 1 :to return to Home page ");
 				System.out.println();
 				System.out.println("press 2 :to return to previous page ");
 				System.out.println();

@@ -3,7 +3,9 @@ package com.dao;
 import java.util.List;
 
 import com.exception.CustomerException;
+import com.exception.TransactionException;
 import com.model.Customer;
+import com.model.Transaction;
 
 public interface CustomerDao {
 	
@@ -21,4 +23,10 @@ public interface CustomerDao {
 	
 	public String withdrawMoney(int c_Acc_No, String w_Name, int w_Amount) throws CustomerException;
 	
+    public Customer logInCustomer(int c_Acc_No, String c_Password) throws CustomerException;
+    
+    public String transferMoney(int s_Acc_No,int T_money,int r_Acc_No) throws CustomerException;
+    
+    public List<Transaction> viewTransactionHistory(int c_Acc_No) throws TransactionException;
+    
 }
